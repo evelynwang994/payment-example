@@ -12,6 +12,7 @@
 	<artifactId>payroll</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>payroll</name>
+	<packaging>jar</packaging>
 	<description>Payroll</description>
 	<properties>
 		<java.version>17</java.version>
