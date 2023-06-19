@@ -44,6 +44,30 @@ Java, Spring Boot, Maven and H2 Database.
     "total": 3.5
 }
 ```
+#### Search a Record By UserId
+1. Send Payment data in the following JSON format.
+```json
+{
+    "userId": "1"
+}
+```
+2. Run http://localhost:80/payment/getPayByUser in POST method on Postman.
+3. You Should receive a response in the following format.
+```json
+{
+    "status": "success",
+    "code": 200,
+    "paymentRecord": [
+        {
+            "id": "ab470dd7-4b44-4ff5-8c68-714b2c6d24bc",
+            "userId": 1,
+            "itemId": "CO0001",
+            "amount": 5,
+            "total": 3.5
+        }
+    ]
+}
+```
 ### Through public URLs Directly
 #### Add a Payment Record
 1. Send Payment data in the following JSON format.
@@ -81,5 +105,29 @@ Java, Spring Boot, Maven and H2 Database.
     "itemId": "CO0001",
     "amount": 5,
     "total": 3.5
+}
+```
+### Search a Record By UserId
+1. Send Payment data in the following JSON format.
+```json
+{
+    "userId": "1"
+}
+```
+2. Run https://payment-example.onrender.com/payment/getPayByUser in POST method on Postman.
+3. You Should receive a response in the following format.
+```json
+{
+    "status": "success",
+    "code": 200,
+    "paymentRecord": [
+        {
+            "id": "ab470dd7-4b44-4ff5-8c68-714b2c6d24bc",
+            "userId": 1,
+            "itemId": "CO0001",
+            "amount": 5,
+            "total": 3.5
+        }
+    ]
 }
 ```

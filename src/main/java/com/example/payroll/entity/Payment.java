@@ -1,4 +1,4 @@
-package com.example.payroll.payment;
+package com.example.payroll.entity;
 
 import java.util.UUID;
 

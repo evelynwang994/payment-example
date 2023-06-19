@@ -1,5 +1,6 @@
-package com.example.payroll.payment;
+package com.example.payroll.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -10,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.payroll.entity.Payment;
+import com.example.payroll.repo.PaymentRepository;
+import com.example.payroll.request.GetPayByUserRequest;
 import com.example.payroll.request.GetPayRequest;
 import com.example.payroll.request.PayRequest;
+import com.example.payroll.response.GetPayByUserResponse;
 import com.example.payroll.response.GetPayResponse;
 import com.example.payroll.response.PayResponse;
 
@@ -64,7 +69,7 @@ public class PaymentController {
     
     @SuppressWarnings("deprecation")
 	@RequestMapping(value = "/getPay", method = RequestMethod.POST)
-    public GetPayResponse getPayResponse(@RequestBody GetPayRequest request) {
+    public GetPayResponse getPayById(@RequestBody GetPayRequest request) {
     	GetPayResponse response = new GetPayResponse();
     	
     	try {
@@ -82,6 +87,26 @@ public class PaymentController {
         	response.setStatus(ERROR_STATUS);
             response.setCode(CODE_FAILURE);
         }
+    	
+    	return response;
+    }
+    
+    @RequestMapping(value = "/getPayByUser", method = RequestMethod.POST)
+    public GetPayByUserResponse getPayByUser(@RequestBody GetPayByUserRequest request) {
+    	GetPayByUserResponse response = new GetPayByUserResponse();
+    	
+    	String userId = request.getUserId();
+    	try {
+    		List<Payment> paymentRecord = repository.getPaymentByUser(userId);
+    		
+    		response.setPaymentRecord(paymentRecord);
+    		response.setStatus(SUCCESS_STATUS);
+    		response.setCode(CODE_SUCCESS);
+    	} catch (Exception e) {
+    		logger.error(e.getMessage());
+    		response.setStatus(ERROR_STATUS);
+            response.setCode(CODE_FAILURE);
+    	}
     	
     	return response;
     }
