@@ -2,6 +2,7 @@ package com.example.payroll.entity;
 
 import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -11,8 +12,10 @@ public class Payment {
 	@Id
 	private UUID id;
 	
+	@Column(name="user_id")
 	private int userId;
 	
+	@Column(name="item_id")
 	private String itemId;
 	
 	private int amount;
