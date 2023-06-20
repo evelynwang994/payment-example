@@ -5,7 +5,7 @@ Java, Spring Boot, Maven and H2 Database.
 ## How to Run the Application
 ### Download Image from Dockerhub
 1. Run "docker pull ejwang150/payment-image:1.1"
-2. Run "docker run -itd -p 80:8080 ejwang150/payment-image:1.1"
+2. Run "docker run -p 80:8080 ejwang150/payment-image:1.1"
 #### Add a Payment Record
 1. Send Payment data in the following JSON format.
 ```json
