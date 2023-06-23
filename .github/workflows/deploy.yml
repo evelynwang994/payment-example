@@ -13,9 +13,9 @@ jobs:
             - name: Docker Login
               run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
             - name: Build Docker Image
-              run: docker build --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/payment-example:1.1 .
+              run: docker build --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/payment-image:1.1 .
             - name: Push to Docker
-              run: docker push ${{ secrets.DOCKER_USERNAME }}/payment-example:1.1
+              run: docker push ${{ secrets.DOCKER_USERNAME }}/payment-image:1.1
     Deploy-to-Render:
         needs: Push-to-Dockerhub
         runs-on: ubuntu-latest
