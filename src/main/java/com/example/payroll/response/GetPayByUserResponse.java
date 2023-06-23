@@ -6,7 +6,17 @@ import com.example.payroll.entity.Payment;
 
 public class GetPayByUserResponse extends BaseResponse {
 	
+	private int page;
+	
 	private List<Payment> paymentRecord;
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
 
 	public List<Payment> getPaymentRecord() {
 		return paymentRecord;

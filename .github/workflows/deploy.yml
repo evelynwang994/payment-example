@@ -1,17 +1,28 @@
-name: Deploy to Render
+name: Deploy
 on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - README.md
+    push:
+        branches:
+            - main
+        paths-ignore:
+            - README.md
 jobs:
-  Deploy-to-Render:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Deploy to Render
-        uses: JorgeLNJunior/render-deploy@v1.3.2
-        with:
-          service_id: ${{ secrets.RENDER_PAYMENT_SERVICE_ID }}
-          api_key: ${{ secrets.RENDER_PAYMENT_API_KEY }}
+    Push-to-Dockerhub:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Docker Login
+              run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
+            - name: Build Docker Image
+              run: docker build --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/payment-example:1.1 .
+            - name: Push to Docker
+              run: docker push ${{ secrets.DOCKER_USERNAME }}/payment-example:1.1
+    Deploy-to-Render:
+        needs: Push-to-Dockerhub
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Deploy to Render
+              uses: JorgeLNJunior/render-deploy@v1.3.2
+              with:
+                service_id: ${{ secrets.RENDER_PAYMENT_SERVICE_ID }}
+                api_key: ${{ secrets.RENDER_PAYMENT_API_KEY }}
