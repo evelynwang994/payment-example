@@ -1,7 +1,7 @@
 # REST API - Payment Example
 It is an API exercise that can be used to add and search purchasing records.
 ## Tech Stack
-Java, Spring Boot, JPA, Maven and H2 Database.
+Java, Spring Boot, JPA, Hibernate, Maven and H2 Database.
 ## How to Run the Application
 ### Download Image from Dockerhub
 1. Run "docker pull ejwang150/payment-image:1.1"
