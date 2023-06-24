@@ -100,7 +100,7 @@ public class PaymentController {
     	String userId = request.getUserId();
     	int page = request.getPage();
     	
-    	Pageable pageable = PageRequest.of(page, 10);
+    	Pageable pageable = PageRequest.of(page-1, 10);
     	try {
     		List<Payment> paymentRecord = repository.getPaymentByUser(userId, pageable);
     		

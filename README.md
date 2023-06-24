@@ -49,7 +49,7 @@ Java, Spring Boot, JPA, Maven and H2 Database.
 ```json
 {
     "userId": "1",
-	"page": 0
+	"page": 1
 }
 ```
 2. Run http://localhost:80/payment/getPayByUser in POST method on Postman.
@@ -58,7 +58,7 @@ Java, Spring Boot, JPA, Maven and H2 Database.
 {
     "status": "success",
     "code": 200,
-	"page": 0,
+	"page": 1,
     "paymentRecord": [
         {
             "id": "ab470dd7-4b44-4ff5-8c68-714b2c6d24bc",
@@ -114,7 +114,7 @@ Java, Spring Boot, JPA, Maven and H2 Database.
 ```json
 {
     "userId": "1",
-	"page": 0
+	"page": 1
 }
 ```
 2. Run https://payment-example.onrender.com/payment/getPayByUser in POST method on Postman.
@@ -123,7 +123,7 @@ Java, Spring Boot, JPA, Maven and H2 Database.
 {
     "status": "success",
     "code": 200,
-	"page": 0,
+	"page": 1,
     "paymentRecord": [
         {
             "id": "ab470dd7-4b44-4ff5-8c68-714b2c6d24bc",
